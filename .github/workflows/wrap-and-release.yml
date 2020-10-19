@@ -1,11 +1,11 @@
 name: Wrap and Release
-on:
-  push:
-    paths:
-      - '*'
+on: [push]
 jobs:
-  check-bats-version:
-    container: lua:latest
+  wrap-and-release:
+    runs-on: ubuntu-latest
+    container: duorbitalhud/duwrap:latest
     steps:
       - uses: actions/checkout@v2
       - run: ls -la
+      - run: cd scripts && ./wrap.sh false
+
