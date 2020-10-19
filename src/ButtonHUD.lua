@@ -8,7 +8,7 @@ function script.onStart()
             {1000, 5000, 10000, 20000, 30000})
 
         -- Written by Dimencia and Archaegeo. Optimization and Automation of scripting by ChronosWS  Linked sources where appropriate, most have been modified.
-        VERSION_NUMBER = 4.60
+        VERSION_NUMBER = 4.62
         -- function localizations
         local mfloor = math.floor
         local stringf = string.format
