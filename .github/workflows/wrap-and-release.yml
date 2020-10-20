@@ -1,21 +1,12 @@
 name: Wrap and Release
-on: [push]
+on:
+  push:
+    branches: master
 jobs:
   wrap-and-release:
     runs-on: ubuntu-latest
-    container: duorbitalhud/duwrap:latest
     steps:
       - uses: actions/checkout@v2
-
-      - name: Wrap
-        run: |
-          ./scripts/wrap.sh true
-          echo "VERSION_NUMBER=$( cat ButtonHUD.conf.version )" >> $GITHUB_ENV
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: ButtonHUD
-          path: ButtonHUD.conf
 
       - name: Create Release Notes
         if: github.ref == 'refs/heads/master'  # ONLY ON MASTER
