@@ -8,6 +8,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Detect Version Number
+        if: github.ref == 'refs/heads/master'  # ONLY ON MASTER
+        run: |
+          ./scripts/version-number-from-src.sh
+          echo "VERSION_NUMBER=$( ./scripts/version-number-from-src.sh )" >> $GITHUB_ENV
+
       - name: Create Release Notes
         if: github.ref == 'refs/heads/master'  # ONLY ON MASTER
         run: |
